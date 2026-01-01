@@ -9,7 +9,7 @@ pipeline {
                 sh """
                     ssh -t -i /var/jenkins_home/.ssh/id_rsa -o StrictHostKeyChecking=no sourov@172.17.186.110 '
                         eval $(minikube docker-env) &&
-                        docker build -t html-website:latest && 
+                        docker build -t html-website:latest . && 
                         kubectl rollout restart deployment/html-website-deployment
                     '
                 """
