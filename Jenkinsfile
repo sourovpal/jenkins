@@ -59,6 +59,19 @@ pipeline {
     }
 
     stages {
+
+        stage('Show Parameters') {
+            steps {
+                echo "App Name: ${params.APP_NAME}"
+                echo "Deploy: ${params.DEPLOY}"
+                echo "Git Branch: ${params.GIT_BRANCH}"
+                echo "Environment Variables: ${params.ENV_VARS}"
+                echo "Secret Key: ${params.SECRET_KEY ? '****' : ''}"
+                echo "Replicas: ${params.REPLICAS}"
+                // echo "Selected Services: ${params.SERVICES}"  // For extended choice
+            }
+        }
+        
         stage('Build & Restart Deployment') {
             steps {
                 echo 'Starting deployment restart...'
