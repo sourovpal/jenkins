@@ -71,6 +71,16 @@ pipeline {
                 // echo "Selected Services: ${params.SERVICES}"  // For extended choice
             }
         }
+
+        stage('Test SSH') {
+            steps {
+                sshagent(['testkey']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no sourov@172.17.186.110 "echo Hello from remote"
+                    '''
+                }
+            }
+        }
         
         stage('Build & Restart Deployment') {
             steps {
