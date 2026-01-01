@@ -1,6 +1,14 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+            name: 'GIT_BRANCH',
+            choices: ['main', 'dev', 'deploy'],
+            description: 'Select Git branch to build'
+        )
+    }
+
     stages {
         stage('Build & Restart Deployment') {
             steps {
