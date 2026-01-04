@@ -4,12 +4,12 @@ pipeline {
      parameters {
          string(
             name: 'SERVER_USER',
-            defaultValue: '',
+            defaultValue: 'sourov',
             description: 'Enter server username...'
         )
          string(
             name: 'SERVER_IP',
-            defaultValue: '',
+            defaultValue: '172.18.26.245',
             description: 'Enter server ip address...'
         )
      }
