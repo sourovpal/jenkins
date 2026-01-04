@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-     parameters {
-        
-    }
+     parameters {}
 
     stages {
 
@@ -16,11 +14,11 @@ pipeline {
 
         stage('Test SSH') {
             steps {
-                sshagent(['privateKey']) {
+                // sshagent(['privateKey']) {
                     // sh '''
                     //     ssh -o StrictHostKeyChecking=no sourov@172.17.186.110 "echo Hello from remote"
                     // '''
-                }
+                // }
             }
         }
         
