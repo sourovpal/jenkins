@@ -27,9 +27,9 @@ pipeline {
         stage('Test SSH') {
             steps {
                 sshagent(['privateKey']) {
-                    sh '''
+                    sh """
                         ssh -o StrictHostKeyChecking=no ${params.SERVER_USER}@${params.SERVER_IP} "echo Hello from remote"
-                    '''
+                    """
                 }
             }
         }
