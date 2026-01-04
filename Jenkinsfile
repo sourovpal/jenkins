@@ -1,7 +1,18 @@
 pipeline {
     agent any
 
-     // parameters {}
+     parameters {
+         string(
+            name: 'SERVER_USER',
+            defaultValue: '',
+            description: 'Enter server username...'
+        )
+         string(
+            name: 'SERVER_IP',
+            defaultValue: '',
+            description: 'Enter server ip address...'
+        )
+     }
 
     stages {
 
@@ -15,12 +26,11 @@ pipeline {
 
         stage('Test SSH') {
             steps {
-                echo "Hello";
-                // sshagent(['privateKey']) {
-                    // sh '''
-                    //     ssh -o StrictHostKeyChecking=no sourov@172.17.186.110 "echo Hello from remote"
-                    // '''
-                // }
+                sshagent(['privateKey']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no {SERVER_USER}@{SERVER_IP} "echo Hello from remote"
+                    '''
+                }
             }
         }
         
